@@ -1,0 +1,82 @@
+body {
+    background-image: url("assets/images/nulagunahero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.time-araa-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 6rem 3rem 0 3rem;
+}
+
+.araa-office {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    padding: 0 3rem;
+    margin: 1rem 0;
+
+    background-color: #34418E;
+    border-radius: 20px;
+    color: #FFD41C;
+}
+
+.araa-office h4 {
+    flex: 1;
+    text-align: center;
+}
+
+.araa-office h1 {
+    flex: 1;
+    text-align: center;
+}
+
+.acgi-office-container {
+    margin: 6rem 3rem 0 3rem;
+    
+}
+
+.acgi-office-container .office-queue-two{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+
+    color: #34418E;
+
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .time-araa-container {
+        flex-direction: column;
+    }
+
+    .time-araa-container .header {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    html{
+        font-size: 70%;
+    }
+    
+    .office-queues-one {
+        margin-top: 5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    html{
+        font-size: 60%;
+    }
+}
