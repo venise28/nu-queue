@@ -1,13 +1,12 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Function to update queue numbers on the page
     function updateQueueNumbers() {
         $.ajax({
             type: "GET",
             url: "get_queue_numbers.php",
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 // Update HTML elements with the fetched queue numbers
-                console.log(data)
                 $("#registrarQueue").text(data.registrar);
                 $("#admissionQueue").text(data.admission);
                 $("#accountingQueue").text(data.accounting);
@@ -17,7 +16,7 @@ $(document).ready(function() {
                 $("#guidanceQueue").text(data.guidance);
                 $("#itroQueue").text(data.itro);
             },
-            error: function() {
+            error: function () {
                 console.error("An error occurred while fetching queue numbers.");
             }
         });
@@ -27,7 +26,6 @@ $(document).ready(function() {
     updateQueueNumbers();
     setInterval(updateQueueNumbers, 5000); // Update every 5 seconds
 });
-
 
 // For DATE AND TIME
 function updateTime() {
@@ -40,9 +38,14 @@ function updateTime() {
     const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
 
     const hours = now.getHours();
-    const minutes = now.getMinutes();
+    const formattedHours = hours >= 12 ? hours % 12 : hours; // Convert to 12-hour format
+
+    // Ensure that 0 is displayed as 12 for midnight
+    const displayHours = formattedHours === 0 ? 12 : formattedHours;
+
+    const minutes = now.getMinutes(); // Get the minutes
     const ampm = hours >= 12 ? 'pm' : 'am';
-    const formattedTime = `${hours % 12}:${minutes.toString().padStart(2, '0')}${ampm}`;
+    const formattedTime = `${displayHours}:${minutes.toString().padStart(2, '0')}${ampm}`;
 
     // Update the elements with the formatted date and time
     dateElement.textContent = formattedDate;
@@ -52,3 +55,4 @@ function updateTime() {
 // Update the time immediately and then every second
 updateTime();
 setInterval(updateTime, 1000);
+
